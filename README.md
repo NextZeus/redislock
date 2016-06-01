@@ -232,9 +232,11 @@ The lock class exposed by redislock. Each instance is assigned a UUID v1 string
 as an id, and is configured to work with the given redis client. The default
 options from which is inherits may be changed by using redislock.setDefaults.
 
-#### lock.acquire[key, [fn]]
+#### lock.acquire[key, [fn]] 
 
-Attempts to acquire a lock, given a key, and an optional callback function.
+Attempts to acquire a lock, given a key [This key is different from you redis key, if you key is myRedisData, this key must different
+form myRedisData, it could be myRedisData:lock. ]
+, and an optional callback function.
 If the initial lock fails, additional attempts will be made for the
 configured number of retries, and padded by the delay. The callback is
 invoked with an error on failure, and returns a promise if no callback is
